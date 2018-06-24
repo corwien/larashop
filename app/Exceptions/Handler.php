@@ -13,7 +13,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        //
+        InvalidRequestException::class,  // Laravel 内置了屏蔽指定异常写日志的解决方案：
     ];
 
     /**
