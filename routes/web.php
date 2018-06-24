@@ -33,9 +33,9 @@ Route::group(['middleware' => 'auth'], function() {
     // 手动触发发送邮件
     Route::get('/email_verification/send', 'EmailVerificationController@send')->name('email_verification.send');
 
-    // 开始
+    // 开始,已登录并且进行了邮箱验证的操作
     Route::group(['middleware' => 'email_verified'], function() {
-
+        Route::get('user_addresses', 'UserAddressesController@index')->name('user_addresses.index');
         /*
         Route::get('/test', function() {
             return 'Your email is verified';
