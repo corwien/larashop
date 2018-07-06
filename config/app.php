@@ -79,7 +79,7 @@ return [
     */
 
    // 'locale' => 'en',   // 语言包 zh-CN
-    'locale' => 'zh-CN',   // 语言包 
+    'locale' => 'zh-CN',   // 语言包
     'faker_locale' => 'zh_CN',  // 生成数据的语言包
 
     /*
