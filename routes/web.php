@@ -19,7 +19,10 @@ Route::get('/', function () {
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'PagesController@root')->name('root');
+// Route::get('/', 'PagesController@root')->name('root');
+
+Route::redirect('/', '/products')->name('root');
+Route::get('products', 'ProductsController@index')->name('products.index');
 
 Auth::routes();
 
