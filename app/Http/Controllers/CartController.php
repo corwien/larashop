@@ -39,7 +39,10 @@ class CartController extends Controller
     {
         // select * from product_skus where id in (xxxx)
         $cartItems = $request->user()->cartItems()->with(['productSku.product'])->get();
-        return view('cart.index', ['cartItems' => $cartItems]);
+
+        $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
+
+        return view('cart.index', ['cartItems' => $cartItems, 'addresses' => $addresses]);
     }
 
     public function remove(ProductSku $sku, Request $request)

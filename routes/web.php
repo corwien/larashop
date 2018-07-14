@@ -63,6 +63,8 @@ Route::group(['middleware' => 'auth'], function() {
         });
         */
 
+        //
+        Route::post('orders', 'OrdersController@store')->name('orders.store');
     });
     // 结束
 });
