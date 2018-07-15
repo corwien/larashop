@@ -127,6 +127,9 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
+    // 订单延长时间，默认超 30秒自动释放
+    'order_ttl' => 1800,
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
