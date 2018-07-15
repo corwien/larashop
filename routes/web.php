@@ -64,7 +64,11 @@ Route::group(['middleware' => 'auth'], function() {
         // 订单详情
         Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
 
+        // 阿里支付
+        Route::get('payment/{order}/alipay', 'PaymentController@payByAlipay')->name('payment.alipay');
 
+        // 前端回调页面
+        Route::get('payment/alipay/return', 'PaymentController@alipayReturn')->name('payment.alipay.return');
 
         /*
        Route::get('/test', function() {
@@ -75,6 +79,7 @@ Route::group(['middleware' => 'auth'], function() {
     // 结束
 });
 
+/*
 // 测试阿里支付
 Route::get('alipay', function() {
     return app('alipay')->web([
@@ -83,6 +88,8 @@ Route::get('alipay', function() {
         'subject' => 'test subject - 测试',
     ]);
 });
+*/
 
+Route::post('payment/alipay/notify', 'PaymentController@alipayNotify')->name('payment.alipay.notify');
 
 Route::get('products/{product}', 'ProductsController@show')->name('products.show');
