@@ -70,6 +70,10 @@ Route::group(['middleware' => 'auth'], function() {
         // 前端回调页面
         Route::get('payment/alipay/return', 'PaymentController@alipayReturn')->name('payment.alipay.return');
 
+        // 评价
+        Route::get('orders/{order}/review', 'OrdersController@review')->name('orders.review.show');
+        Route::post('orders/{order}/review', 'OrdersController@sendReview')->name('orders.review.store');
+
         /*
        Route::get('/test', function() {
            return 'Your email is verified';
