@@ -147,6 +147,7 @@
           address_id: $('#order-form').find('select[name=address]').val(),
           items: [],
           remark: $('#order-form').find('textarea[name=remark]').val(),
+          coupon_code: $('input[name=coupon_code]').val(), // 从优惠码输入框中获取优惠码
         };
         // 遍历 <table> 标签内所有带有 data-id 属性的 <tr> 标签，也就是每一个购物车中的商品 SKU
         $('table tr[data-id]').each(function () {
@@ -185,9 +186,14 @@
               });
               html += '</div>';
               swal({content: $(html)[0], icon: 'error'})
-            } else {
+            } else if (error.response.status === 403)
+            {
+              // 如果返回码是 403，说明有其他条件不满足
+              swal(error.response.data.msg, '', 'error');
+            }
+            else {
               // 其他情况应该是系统挂了
-              swal('系统错误', '', 'error');
+              swal('系统内部错误', '', 'error');
             }
           });
       });
@@ -229,6 +235,10 @@
         $('#btn-cancel-coupon').hide(); // 隐藏 取消 按钮
         $('#btn-check-coupon').show(); // 显示 检查 按钮
       });
+
+
+
+
 
     });
   </script>
